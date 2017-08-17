@@ -26,7 +26,7 @@ meta_data = vars(parser.parse_args())
 meta_data["expt_name"] = "ARC_" + meta_data["dataset"] + meta_data["expt_name"]
 
 for md in meta_data.keys():
-	print md, meta_data[md]
+	print(md, meta_data[md])
 
 expt_name = meta_data["expt_name"]
 learning_rate = 1e-4
@@ -40,7 +40,7 @@ meta_data["n_iter"] = n_iter = 1500000
 batch_size = 128
 meta_data["num_output"] = 2
 
-print "... setting up the network"
+print("... setting up the network")
 X = T.tensor4("input")
 y = T.imatrix("target")
 
@@ -61,15 +61,15 @@ params = get_all_params(l_y)
 updates = adam(loss, params, learning_rate=learning_rate)
 
 meta_data["num_param"] = lasagne.layers.count_params(l_y)
-print "number of parameters: ", meta_data["num_param"]
+print("number of parameters: ", meta_data["num_param"])
 
-print "... compiling"
+print("... compiling")
 train_fn = theano.function([X, y], outputs=loss, updates=updates)
 val_fn = theano.function([X, y], outputs=[loss, accuracy])
 embed_fn = theano.function([X], outputs=embedding)
 op_fn = theano.function([X], outputs=prediction_clean)
 
-print "... loading dataset"
+print("... loading dataset")
 if meta_data["dataset"] == 'omniglot':
 	worker = OmniglotOS(image_size=image_size, batch_size=batch_size)
 elif meta_data["dataset"] == 'lfw':
@@ -78,7 +78,7 @@ elif meta_data["dataset"] == 'lfw':
 meta_data, params = train(train_fn, val_fn, worker, meta_data, \
 		get_params=lambda: helper.get_all_param_values(l_y))
 
-print "... testing"
+print("... testing")
 helper.set_all_param_values(l_y, params)
 meta_data = test(val_fn, worker, meta_data)
 

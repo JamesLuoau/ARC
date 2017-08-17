@@ -100,4 +100,4 @@ os.system('rm -rf omniglot-master/')
 os.system('rm -rf images_background/')
 os.system('rm -rf images_evaluation/')
 
-print 'omniglot data preperation done, exiting ...'
+print('omniglot data preperation done, exiting ...')

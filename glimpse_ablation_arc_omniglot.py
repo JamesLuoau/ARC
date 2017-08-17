@@ -56,12 +56,12 @@ for glimpses in range(1, 9):
     X_train, y_train = worker.fetch_batch('train')
     train_loss = train_fn(embedding_fn(X_train), y_train)
     val_loss, val_acc = val_fn(embedding_fn(X_test), y_test)
-    print "number of glimpses per image: ", glimpses
-    print "\ttraining performance:"
-    print "\t\t loss:", train_loss
-    print "\ttesting performance:" 
-    print "\t\t loss:", val_loss
-    print "\t\t accuracy:", val_acc
+    print("number of glimpses per image: ", glimpses)
+    print("\ttraining performance:")
+    print("\t\t loss:", train_loss)
+    print("\ttesting performance:")
+    print("\t\t loss:", val_loss)
+    print("\t\t accuracy:", val_acc)
 
     params = helper.get_all_param_values(l_y)
     serialize(params, str(glimpses) + 'glimpses' + '.params')

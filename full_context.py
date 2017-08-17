@@ -127,7 +127,7 @@ accuracy = T.mean(categorical_accuracy(prediction, y))
 params = get_all_params(l_y, trainable=True)
 updates = adam(loss, params, learning_rate=3e-4)
 
-print "... compiling"
+print("... compiling")
 train_fn = theano.function(inputs=[X, y], outputs=loss, updates=updates)
 val_fn = theano.function(inputs=[X, y], outputs=[loss, accuracy])
 op_fn = theano.function([X], outputs=prediction)

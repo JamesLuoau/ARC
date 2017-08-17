@@ -35,7 +35,7 @@ FACES = np.array(FACES)
 COUNTS = np.array(COUNTS)
 
 os.system('rm -rf lfw')
-os.system('rm lfw.tgz')
+# os.system('rm lfw.tgz')
 
 os.mkdir('LFW')
 np.save('LFW/faces', FACES)

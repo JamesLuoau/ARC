@@ -33,8 +33,8 @@ class Omniglot(object):
 
 		# resize the images
 		resized_chars = np.zeros((1623, 20, image_size, image_size), dtype='uint8')
-		for i in xrange(1623):
-			for j in xrange(20):
+		for i in range(1623):
+			for j in range(20):
 				resized_chars[i, j] = resize(chars[i, j], (image_size, image_size))
 		chars = resized_chars
 
@@ -134,7 +134,7 @@ class OmniglotVerif(Omniglot):
 		num_alphbts = len(starts)
 
 		X = np.zeros((2 * batch_size, image_size, image_size), dtype='uint8')
-		for i in xrange(batch_size / 2):
+		for i in range(batch_size / 2):
 			# choose similar chars
 			same_idx = choice(range(starts[0], starts[-1] + sizes[-1]))
 
@@ -212,7 +212,7 @@ class OmniglotOS(Omniglot):
 		num_alphbts = len(starts)
 
 		X = np.zeros((2 * batch_size, image_size, image_size), dtype='uint8')
-		for i in xrange(batch_size / 2):
+		for i in range(batch_size / 2):
 			# choose similar chars
 			same_idx = choice(range(data.shape[0]))
 
@@ -247,8 +247,8 @@ class OmniglotOSLake(object):
 
 		# resize the images
 		resized_X = np.zeros((20, 800, image_size, image_size), dtype='uint8')
-		for i in xrange(20):
-			for j in xrange(800):
+		for i in range(20):
+			for j in range(800):
 				resized_X[i, j] = resize(X[i, j], (image_size, image_size))
 		X = resized_X
 

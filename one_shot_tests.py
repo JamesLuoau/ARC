@@ -20,7 +20,7 @@ else:
         embeddings = embedder(X).reshape(-1, 20, embedding_size)
         return predictor(embeddings)
 
-print "\n ... testing on the set by Brenden Lake et al"
+print("\n ... testing on the set by Brenden Lake et al")
 
 worker = OmniglotOSLake()
 X_OS, t_OS = worker.fetch_batch()
@@ -32,13 +32,13 @@ for run in range(20):
 
 	y = predictor(X).reshape(20, 20).argmax(axis=1)
 	run_acc = np.mean(y == t) * 100.0
-	print "run ", run + 1, ": ", run_acc 
+	print("run ", run + 1, ": ", run_acc)
 	all_acc.append(run_acc)
 
-print "accuracy: ", np.mean(all_acc), "%"
+print("accuracy: ", np.mean(all_acc), "%")
 
 
-print "\n\n ... testing on the method of Vinyals et al"
+print("\n\n ... testing on the method of Vinyals et al")
 
 worker = OmniglotVinyals(num_trials=20)
 
@@ -48,7 +48,7 @@ for run in range(20):
 
 	y = predictor(X).reshape(20, 20).argmax(axis=1)
 	run_acc = np.mean(y == t) * 100.0
-	print "run ", run + 1, ": ", run_acc 
+	print("run ", run + 1, ": ", run_acc)
 	all_acc.append(run_acc)
 
-print "accuracy: ", np.mean(all_acc), "%"
+print("accuracy: ", np.mean(all_acc), "%")
